@@ -64,5 +64,3 @@ Ready? Start!
 `)
 
 game(3)
-
-// console.log(playRound(playerPlay(), computerPlay()));
