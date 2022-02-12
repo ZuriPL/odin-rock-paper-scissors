@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+}
+
+* {
+    margin: 0.25rem;
+}
+
+.user-input-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.user-input {
+    border: none;
+    color: deepskyblue;
+    background-color: white;
+    border: 5px solid deepskyblue;
+    border-radius: 10px;
+    padding: .5rem 1rem;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.user-input:hover, .user-input:active {
+    color: white;
+    background-color: deepskyblue;
+}
+
+.result-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    margin-bottom: 1rem;
+}
+
+.score {
+    font-weight: 900;
+    font-size: 1.5em;
+    font-size: 32px;
+    margin-bottom: 2rem;
+}
+
+.result {
+    text-align: center;
+    line-height: 1.5rem;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+
+h1 {
+    padding: 1rem;
+}

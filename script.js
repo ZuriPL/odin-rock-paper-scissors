@@ -1,3 +1,9 @@
+const out = document.querySelector('.result');
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+const score = document.querySelector('.score')
+
 function computerPlay() {
     let guess = Math.floor(Math.random() * 3);
     let answer = (guess == 0) ? "rock" : (guess == 1) ? "paper" : "scissors";
@@ -11,23 +17,39 @@ function playerPlay() {
     return answer;
 }
 
+let playerScore = 0, computerScore = 0;
+
 function playRound(playerGuess, computerGuess) {
-    if (playerGuess != "rock" && playerGuess != "paper" && playerGuess != "scissors") {
-        return "ERROR: Invalid Input";
-    }
     if (computerGuess == "rock" && playerGuess == "scissors" || computerGuess == "paper" && playerGuess == "rock" || computerGuess == "scissors" && playerGuess == "paper") {
-        return "The Computer Won";
+        out.textContent = "The Computer won the round";
+        computerScore++;
     } else if (playerGuess == "rock" && computerGuess == "scissors" || playerGuess == "paper" && computerGuess == "rock" || playerGuess == "scissors" && computerGuess == "paper") {
-        return "The Player Won";
+        out.textContent = "The Player won the round";
+        playerScore++;
     } else {
-        return "It's a tie";
+        out.textContent = "The round is a tie";
     }
-}
+    if (playerScore >= 5 || computerScore >= 5) {
+        out.innerHTML = (playerScore > computerScore) ? "*CONGRATULATIONS*<br>You win!" : "*GAME OVER*<br>Try again";
+        playerScore = 0; 
+        computerScore = 0;
+    };
+    score.textContent = `${playerScore} - ${computerScore}`;
+};
 
+rockButton.addEventListener('click', () => {
+    playRound('rock', computerPlay());
+});
 
+paperButton.addEventListener('click', () => {
+    playRound('paper', computerPlay());
+});
+
+scissorsButton.addEventListener('click', () => {
+    playRound('scissors', computerPlay());
+});
 
 function game(pointsRequiredToWin) {
-    let playerScore = 0, computerScore = 0;
 
     while (playerScore < pointsRequiredToWin && computerScore < pointsRequiredToWin) {
         let roundResult = playRound(playerPlay(), computerPlay());
@@ -63,4 +85,4 @@ In this game you will play a game of rock, paper, scissors against (pseudo)rando
 Ready? Start!
 `)
 
-game(3)
+
